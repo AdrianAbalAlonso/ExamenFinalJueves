@@ -1,41 +1,26 @@
 package busqueda;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Busqueda {
 
     public static void main(String[] args) {
-        /**
-         * con una salida por pantalla pedimos el numero de elementos del array
-         * creamos un String vacio ,y  este lo declaramos como el objeto de la clase Scanner con la funcion nextLine 
-         * que nos recoje el siguieinte valor introducido
-         */
-        System.out.println("Introduce el numero de elementos del array: ");
-        String elementos="";
-        Scanner pedirElementos = new Scanner (System.in); 
-        elementos= pedirElementos.nextLine (); 
+         int valorIndice;
+        String pedirIndice = JOptionPane.showInputDialog(null, "Introduce el valor del que deseas averiguar el indice: ");  
+        valorIndice = Integer.parseInt(pedirIndice);
         
-        int numElementos = Integer.parseInt(elementos);
-        /**
-         * creamos un array de tipo int que nos recoja como longitud del array el numElementos
-         * que antes pedimos , este es igual al numero de elmentos que pedimos
-         * al principio
-         */
-        int[] numeros = new int[numElementos];
+        int[] numeros = new int[valorIndice];
         for (int i = 0; i < numeros.length; i++) {
             numeros[i] = i * 5;
         }
-        
-        System.out.println("Introduce el valor del que deseas averiguar el indice: ");
-        String valor="";
-        Scanner pedirValor = new Scanner (System.in); 
-        valor= pedirElementos.nextLine (); 
-        
-        int numValor = Integer.parseInt(valor);
+        int valor;
+        String pedirValor = JOptionPane.showInputDialog(null, "Introduce el valor del que deseas averiguar el indice: ");     
+        valor = Integer.parseInt(pedirValor);   
         
         Busqueda ejemplo = new Busqueda();
-        int indice = ejemplo.busquedaBinaria(numeros, numValor, 0, numeros.length - 1);
-        System.out.println("El indice del valor '"+valor+"' es: " + indice);
+        int indice = ejemplo.busquedaBinaria(numeros, valor, 0, numeros.length - 1);
+        JOptionPane.showMessageDialog(null,"El indice del valor '"+valor+"' es: " + indice);
     }
 
     public int busquedaBinaria(int[] listado, int clave, int posInicial, int posFinal) {
